@@ -1,5 +1,8 @@
 FROM openjdk:11
-ADD target/springbootdocker.jar springbootdocker.jar
 EXPOSE 8080
+ARG JAR_FILE
 
-ENTRYPOINT ["java", "-jar", "springbootdocker.jar"]
+# Add application jar file to the container
+COPY ${JAR_FILE} app.jar
+
+ENTRYPOINT ["java", "-jar", "/app.jar"]

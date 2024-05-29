@@ -1,5 +1,5 @@
 FROM openjdk:11
-ADD target/springbootDocker.jar springbootDocker.jar
+ADD target/springbootdocker.jar springbootdocker.jar
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "springbootDocker.jar"]
+ENTRYPOINT ["java", "-jar", "springbootdocker.jar"]

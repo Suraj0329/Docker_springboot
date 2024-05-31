@@ -13,6 +13,10 @@
 # Stage 1: Build stage
 FROM ubuntu AS build
 
+# Install JDK
+RUN apt-get update && \
+    apt-get install -y openjdk-11-jdk
+
 # Set the working directory in the container
 WORKDIR /app
 
@@ -34,10 +38,11 @@ WORKDIR /app
 # Copy the JAR file from the build stage
 COPY --from=build /app/app.jar /app/app.jar
 
-# Expose port 8080
+# Expose port 8080 (optional if your application listens on this port)
 EXPOSE 8080
 
 # Specify the command to run the Java application
 CMD ["java", "-jar", "app.jar"]
+
 
 
